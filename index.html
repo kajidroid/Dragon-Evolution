@@ -227,10 +227,10 @@
   /* ===== LEVELING ===== */
   .level-cols{
     display:grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
     gap:24px;
   }
-  @media (max-width:680px){ .level-cols{grid-template-columns:1fr;} .race-card{grid-template-columns:64px 1fr;} .race-swatch{width:64px;height:64px;} }
+  @media (max-width:680px){ .race-card{grid-template-columns:64px 1fr;} .race-swatch{width:64px;height:64px;} }
 
   .level-card{
     background:var(--bg-panel);
@@ -1463,6 +1463,104 @@
         </div>
       </div>
     </div>
+
+    <div class="item-card">
+      <div class="item-heading" onclick="toggleForms(this)">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAd1JREFUOI29kjFrU1EUx3/PhPSFmpBy80JMikSyJdJWQReNQyYhQ8ChH8GloKNCpIogGOhU0A9gKahTtkYRWjvEIYoQJIQo6JA8w0seSfMIfWmR61DyzNNanPzDXc49v/85594D/1PVyqbstGtyOnbqJGB5IS6XF+IymxAymxASIByJU1hdcUyUv4EA6ajGYlLQ0i0aukm9O+D15yYfq2VK5QqPHj5RvMfB6aiG8PsAaOkW5v4B2lyAFLAUO0vy8kUnX/kdvnYuDsB8LODEJybdvoUxtql/H/CpO1IAvNNwOqq5wImm4d7Qdt15J3BkRqXbt2jpPgcCEH6fA0dmVHq4DZxfWCsWWCsWMPcPmI8FWEwKABq66SQbYzfsGqHf/MCgaXDn7i0Aio/XEX4fwi/Y/doGoDe0CQdVjNEvI9ce/Oj3+LKxQetthZs3rtDQTaeDyezTD+h08LLWVnhakutbW0fJ925zaIUxxjbpqEa9OQAgpYUwRh3XCAocreiFS9fxeEMAvH/3nLlX2xxae9x/U6E3tElpIXa+dVzVATwAkfiZBzu72wTVPTwehWcvSlyNeVHFLOVqg0Tw9LHwHyqsrshOuybzuYzMJoQ8r80650RwWvlcRuZzmX8GfgKkeNgac8YpOwAAAABJRU5ErkJggg==" alt="Food">
+        <h3>Food</h3>
+        <span class="toggle-arrow">▼</span>
+      </div>
+      <div class="item-body">
+        <p class="desc">Lista completa de itens comestíveis e consumíveis, com seus bônus de status, durações e efeitos.</p>
+
+        <div class="closet-gallery" style="margin-bottom:26px;">
+          <img src="data:image/png;base64,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" alt="Bolsa de comidas">
+        </div>
+
+        <div class="weapon-category" style="--cat:#4fa3d1">
+          <span class="cat-tag">Buffs de Comida (Duração de 1 Minuto)</span>
+          <p class="xp-note" style="text-align:left;margin-bottom:12px;">Todos os multiplicadores e alterações de atributo desta seção duram exatamente 1 minuto.</p>
+          <div class="weapon-grid">
+
+            <div class="weapon-card" style="--cat:#4fa3d1">
+              <h4>Carne Crua de Dinossauro</h4>
+              <p>Efeitos: 0.9x Vida / 1.1x Força</p>
+            </div>
+
+            <div class="weapon-card" style="--cat:#4fa3d1">
+              <h4>Peixe Gigante</h4>
+              <p>Efeitos: 0.9x Vida / 1.1x Força</p>
+            </div>
+
+            <div class="weapon-card" style="--cat:#4fa3d1">
+              <h4>Carne de Dinossauro Cozida</h4>
+              <p>Efeitos: 1.1x Vida / 0.9x Destreza / 1.1x Força</p>
+            </div>
+
+            <div class="weapon-card" style="--cat:#4fa3d1">
+              <h4>Peixe Gigante Cozido</h4>
+              <p>Efeitos: 1.1x Vida / 1.1x Força</p>
+            </div>
+
+            <div class="weapon-card" style="--cat:#4fa3d1">
+              <h4>Ramen</h4>
+              <p>Efeitos: 1.1x Vida / 1.1x Ki Máximo / 1.1x Poder de Ki</p>
+            </div>
+
+            <div class="weapon-card" style="--cat:#4fa3d1">
+              <h4>Laranja Ajisa</h4>
+              <p>Efeitos: 1.15x Destreza / 1.15x Ki Máximo</p>
+            </div>
+
+            <div class="weapon-card" style="--cat:#4fa3d1">
+              <h4>Sopa Medicinal</h4>
+              <p>Efeitos: 1.2x Vida / 1.2x Poder de Ki</p>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="weapon-category" style="--cat:#e0c034">
+          <span class="cat-tag">Consumíveis Permanentes (Uso Único)</span>
+          <p class="xp-note" style="text-align:left;margin-bottom:12px;">Esses itens concedem aumentos permanentes de atributos instantaneamente ao serem consumidos.</p>
+          <div class="weapon-grid">
+
+            <div class="weapon-card" style="--cat:#e0c034">
+              <h4>Fruta do Poder</h4>
+              <p>Efeitos: adiciona +10 pontos permanentes em todos os atributos.</p>
+            </div>
+
+            <div class="weapon-card" style="--cat:#e0c034">
+              <h4>Frasco de Água Sagrada</h4>
+              <p>Efeitos: adiciona +1 ponto permanente em todos os atributos.</p>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="weapon-category" style="--cat:#4f9d6e">
+          <span class="cat-tag">Itens Médicos &amp; Cultiváveis</span>
+          <div class="weapon-grid">
+
+            <div class="weapon-card" style="--cat:#4f9d6e">
+              <h4>Feijão Senzu</h4>
+              <p>Mecânica: item cultivável.<br>Efeitos: restaura completamente sua vida e stamina.</p>
+            </div>
+
+            <div class="weapon-card" style="--cat:#4f9d6e">
+              <h4>Musgo Medicinal</h4>
+              <p>Mecânica: item cultivável.</p>
+            </div>
+
+            <div class="weapon-card" style="--cat:#4f9d6e">
+              <h4>Balde de Líquido Medicinal</h4>
+              <p>Mecânica: item de recurso de restauração/cura.</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <section id="pesos">
@@ -1530,6 +1628,14 @@
           <li>Você tem <strong>3 tentativas por dia</strong> para jogar.</li>
           <li>A cada <strong>5 pontos</strong> que você marcar em uma rodada, ganha <strong>1 AP</strong> (ponto de atributo) para investir no seu personagem.</li>
           <li>Uma ótima forma de garantir uma fonte diária de pontos de atributo, além do XP de combate.</li>
+        </ul>
+      </div>
+
+      <div class="level-card">
+        <span class="tag" style="--accent:#4f9d6e">Combate</span>
+        <h3>Modo História</h3>
+        <ul>
+          <li>Você pode evoluir agora passando por cada episódio do anime, fazendo você se sentir mais submerso no jogo.</li>
         </ul>
       </div>
 
