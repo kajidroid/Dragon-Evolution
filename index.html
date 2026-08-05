@@ -3307,8 +3307,8 @@
   (function(){
     var el = document.getElementById('powerLevelCounter');
     if(!el) return;
-    var target = 100000;
-    var duration = 5000;
+    var target = 1000000;
+    var duration = 500000;
     var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if(prefersReduced){
       el.textContent = target.toLocaleString('en-US');
